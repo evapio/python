@@ -1,5 +1,7 @@
 import logging
 
+import pymongo
+
 import tornado.ioloop
 import tornado.web
 
@@ -7,7 +9,9 @@ import tornado.web
 class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
-        self.write("Hello, evapsss")
+        mongo = pymongo.MongoClient("mongodb://mongodb")
+        logging.info(mongo.server_info())
+        self.write("Hello, Deeps: {}".format(mongo.server_info()))
 
 
 def make_app():

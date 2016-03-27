@@ -6,4 +6,4 @@ WORKDIR /code
 RUN pip install tornado pymongo
 EXPOSE 9090
 
-CMD python -m tornado.autoreload /code/server.py
+CMD python -m tornado.autoreload `pwd`/server.py
